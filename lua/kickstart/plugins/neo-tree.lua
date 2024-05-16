@@ -11,14 +11,25 @@ return {
   },
   cmd = 'Neotree',
   keys = {
-    { '\\', ':Neotree reveal<CR>', { desc = 'NeoTree reveal' } },
+    { '\\', ':Neotree toggle<CR>', { desc = 'NeoTree toggle', silent = true } },
   },
   opts = {
+    default_components_configs = {
+      indent = {
+        indent_size = 2,
+        padding = 1,
+        with_markers = true,
+        indent_marker = '|',
+      },
+    },
     filesystem = {
       window = {
         mappings = {
           ['\\'] = 'close_window',
         },
+      },
+      filtered_items = {
+        visible = false,
       },
     },
   },
