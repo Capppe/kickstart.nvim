@@ -30,3 +30,11 @@ vim.api.nvim_create_autocmd({ 'TermOpen', 'BufEnter' }, {
     end
   end,
 })
+
+-- Fix barbar active buffer icon color
+vim.api.nvim_create_autocmd('ColorScheme', {
+  callback = vim.schedule_wrap(function()
+    vim.cmd 'hi BufferCurrentSign guibg=cyan'
+  end),
+  group = vim.api.nvim_create_augroup('color_fix', {}),
+})

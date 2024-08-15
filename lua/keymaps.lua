@@ -1,3 +1,4 @@
+local utils = require 'custom.utils.utils'
 local M = {}
 
 local map = function(key, cmd, desc)
@@ -71,6 +72,7 @@ M.telescope = function()
   map('<leader>sg', builtin.live_grep, '[S]earch by [G]rep')
   map('<leader>sd', builtin.diagnostics, '[S]earch [D]iagnostics')
   map('<leader>sr', builtin.resume, '[S]earch [R]esume')
+  map('<leader>su', builtin.lsp_references, '[S]earch [U]sages')
   map('<leader>s.', builtin.oldfiles, '[S]earch Recent Files ("." for repeat)')
   map('<leader><leader>', builtin.buffers, '[ ] Find existing buffers')
   map('<leader>/', function()
@@ -103,8 +105,65 @@ map('<Space>x', ':BufferClose<CR>', '[TAB]: Close')
 local function toggle_term(direction, name)
   return ':ToggleTerm direction=' .. direction .. ' name=' .. name .. '<CR>'
 end
+
 map('<Space>th', toggle_term('horizontal', 'HTerm'), '[Term]: Toggle horizontal')
 
-map('<Space>tv', toggle_term('vertical', 'HTerm'), '[Term]: Toggle vertical')
+map('<Space>tv', toggle_term('vertical', 'VTerm'), '[Term]: Toggle vertical')
+
+-- Debugger binds
+-- local dap = require 'nvim-dap'
+map('<leader>dB', function()
+  require('dap').set_breakpoint(vim.fn.input 'Breakpoint condition: ')
+end, 'Breakpoint Condition')
+
+map('<leader>db', function()
+  require('dap').toggle_breakpoint()
+end, 'Toggle breakpoint')
+
+map('<leader>dc', function()
+  require('dap').continue()
+end, 'Continue')
+
+map('<leader>di', function()
+  require('dap').step_into()
+end, 'Step Into')
+
+map('<leader>dj', function()
+  require('dap').down()
+end, 'Down')
+
+map('<leader>dk', function()
+  require('dap').up()
+end, 'Up')
+
+map('<leader>do', function()
+  require('dap').step_out()
+end, 'Step Out')
+
+map('<leader>dO', function()
+  require('dap').step_over()
+end, 'Step Over')
+
+map('<leader>dt', function()
+  require('dap').terminate()
+end, 'Terminate')
+
+map('<leader>dr', function()
+  require('dap').repl.open()
+end, 'Open REPL')
+
+-- Arduino dev binds
+map('<leader>ab', function()
+  require('custom.arduino.arduino_board_picker').select_boards(require('telescope.themes').get_dropdown {})
+end, 'Select board(current: ' .. require('custom.utils.utils').get_curr_board() .. ')')
+
+map('<leader>ac', function()
+  local curr_board = utils.get_curr_board()
+  if curr_board == nil or curr_board == '' then
+    require('custom.arduino.arduino_board_picker').select_boards(require('telescope.themes').get_dropdown {})
+  end
+
+  utils.compile_to_board()
+end, 'Compile this sketch (' .. utils.get_valid_filename() .. ')')
 
 return M

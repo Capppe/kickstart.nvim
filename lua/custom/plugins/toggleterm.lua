@@ -9,6 +9,10 @@ return {
           return vim.o.columns * 0.4
         end
       end,
+      on_open = function()
+        vim.cmd ':startinsert'
+      end,
+      persist_mode = false,
     }
   end,
 }
