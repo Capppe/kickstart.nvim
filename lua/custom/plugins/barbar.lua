@@ -7,13 +7,28 @@ return {
   init = function()
     vim.g.barbar_auto_setup = false
   end,
-  config = function()
-    require('barbar').setup {
-      auto_hide = 1,
-      icons = {
-        visible = { separator = { left = ' ', right = '' } },
+  opts = {
+    auto_hide = 1,
+    icons = {
+      buffer_index = true,
+      separator = { left = '▎', right = '' },
+
+      diagnostics = {
+        [vim.diagnostic.severity.ERROR] = { enabled = true, icon = ' ' },
       },
-    }
-  end,
-  version = '^1.0.0',
+
+      gitsigns = {
+        added = { enabled = true, icon = '+' },
+        changed = { enabled = true, icon = '~' },
+        deleted = { enabled = true, icon = '-' },
+      },
+
+      filetype = {
+        enabled = true,
+      },
+
+      preset = 'powerline',
+    },
+    tabpages = true,
+  },
 }

@@ -1,13 +1,15 @@
 local M = {}
 
 M.current_lsp = function()
-  local clients = vim.lsp.get_active_clients()
+  local clients = vim.lsp.get_clients()
   if next(clients) == nil then
     return ''
   else
-    local current_client = clients[vim.api.nvim_get_current_buf()]
+    local current_client = clients[1]
     if current_client then
       return 'LSP: ' .. current_client.name
+    else
+      return 'LSP: Null'
     end
   end
 end

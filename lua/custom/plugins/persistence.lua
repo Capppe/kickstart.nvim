@@ -5,4 +5,5 @@ return {
     dir = vim.fn.expand(vim.fn.stdpath 'state') .. '/sessions/',
     options = { 'buffers', 'curdir' },
   },
+  branch = true,
 }

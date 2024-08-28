@@ -100,6 +100,22 @@ end
 map('<Tab>', ':BufferNext<CR>', '[TAB]: Next')
 map('<S-Tab>', ':BufferPrevious<CR>', '[TAB]: Previous')
 map('<Space>x', ':BufferClose<CR>', '[TAB]: Close')
+map('<A-1>', ':BufferGoto 1<CR>', '[TAB]: Goto buffer 1')
+map('<A-2>', ':BufferGoto 2<CR>', '[TAB]: Goto buffer 2')
+map('<A-3>', ':BufferGoto 3<CR>', '[TAB]: Goto buffer 3')
+map('<A-4>', ':BufferGoto 4<CR>', '[TAB]: Goto buffer 4')
+map('<A-5>', ':BufferGoto 5<CR>', '[TAB]: Goto buffer 5')
+map('<A-6>', ':BufferGoto 6<CR>', '[TAB]: Goto buffer 6')
+map('<A-7>', ':BufferGoto 7<CR>', '[TAB]: Goto buffer 7')
+map('<A-8>', ':BufferGoto 8<CR>', '[TAB]: Goto buffer 8')
+map('<A-9>', ':BufferGoto 9<CR>', '[TAB]: Goto buffer 9')
+map('<A-0>', ':BufferLast<CR>', '[TAB]: Goto last buffer')
+map('<A-,>', ':BufferCloseBuffersLeft<CR>', '[TAB]: Close buffers to the left')
+map('<A-.>', ':BufferCloseBuffersRight<CR>', '[TAB]: Close buffers to the right')
+map('<A-/>', ':BufferOrderByLanguage<CR>', '[TAB]: Order buffers by language')
+
+-- Neotree, sidebar
+map('\\', ':Neotree toggle<CR>', 'Toggle neotree')
 
 -- Toggleterm, better terminal management
 local function toggle_term(direction, name)

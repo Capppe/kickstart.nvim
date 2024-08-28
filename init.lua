@@ -616,24 +616,24 @@ require('lazy').setup({
       -- Simple and easy statusline.
       --  You could remove this setup call if you don't like it,
       --  and try some other statusline plugin
-      local statusline = require 'mini.statusline'
-      -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font, set_vim_settings = false }
-
-      -- You can configure sections in the statusline by overriding their
-      -- default behavior. For example, here we set the section for
-      -- cursor location to LINE:COLUMN
-
-      local funcs = require 'funcs'
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_location = function()
-        return '%2l:%-2v'
-      end
-
-      ---@diagnostic disable-next-line: duplicate-set-field
-      statusline.section_fileinfo = function()
-        return funcs.current_lsp()
-      end
+      -- local statusline = require 'mini.statusline'
+      -- -- set use_icons to true if you have a Nerd Font
+      -- statusline.setup { use_icons = vim.g.have_nerd_font, set_vim_settings = false }
+      --
+      -- -- You can configure sections in the statusline by overriding their
+      -- -- default behavior. For example, here we set the section for
+      -- -- cursor location to LINE:COLUMN
+      --
+      -- local funcs = require 'funcs'
+      -- ---@diagnostic disable-next-line: duplicate-set-field
+      -- statusline.section_location = function()
+      --   return '%2l:%-2v'
+      -- end
+      --
+      -- ---@diagnostic disable-next-line: duplicate-set-field
+      -- statusline.section_fileinfo = function()
+      --   return funcs.current_lsp()
+      -- end
 
       -- ---@diagnostic disable-next-line: duplicate-set-field
       -- statusline.section_git = function()
@@ -663,9 +663,9 @@ require('lazy').setup({
         additional_vim_regex_highlighting = { 'ruby' },
       },
       indent = { enable = true, disable = { 'ruby' } },
-      autotag = {
-        enable = true,
-      },
+      -- autotag = {
+      --   enable = true,
+      -- },
     },
     config = function(_, opts)
       -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
