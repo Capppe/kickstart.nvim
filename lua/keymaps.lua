@@ -11,7 +11,7 @@ map('<Esc>', '<cmd>nohlsearch<CR>')
 map('[d', vim.diagnostic.goto_prev, 'Go to previous [D]iagnostic message')
 map(']d', vim.diagnostic.goto_next, 'Go to next [D]iagnostic message')
 map('<leader>e', vim.diagnostic.open_float, 'Show diagnostic [E]rror messages')
-map('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
+-- map('<leader>q', vim.diagnostic.setloclist, 'Open diagnostic [Q]uickfix list')
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
@@ -45,10 +45,10 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 -- Resize buffers with <C-left,right,up,down -arrows>
-map('<C-left>', ':vertical res -2<CR>', 'Resize left')
-map('<C-right>', ':vertical res +2<CR>', 'Resize right')
-map('<C-up>', ':horizontal res -2<CR>', 'Resize up')
-map('<C-down>', ':horizontal res +2<CR>', 'Resize down')
+map('<A-h>', ':vertical res -4<CR>', 'Resize left')
+map('<A-l>', ':vertical res +4<CR>', 'Resize right')
+map('<A-k>', ':horizontal res -4<CR>', 'Resize up')
+map('<A-j>', ':horizontal res +4<CR>', 'Resize down')
 
 -- Allow moving cursor through wrapped lines with h,j,k,l
 vim.keymap.set('n', 'j', 'v:count ? "j" : "gj"', { noremap = true, silent = true, expr = true })
@@ -88,6 +88,9 @@ M.telescope = function()
       prompt_title = 'Live Grep in Open Files',
     }
   end, '[S]earch [/] in Open Files')
+
+  -- Trouble.nvim, error viewer
+  map('<leader>q', ':Trouble diagnostics toggle<CR>', 'Open diagnostic [Q]uickfix list')
 
   -- Shortcut for searching your Neovim configuration files
   map('<leader>sn', function()

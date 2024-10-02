@@ -77,3 +77,10 @@ vim.opt.hlsearch = true
 vim.opt.laststatus = 3
 
 vim.opt.splitkeep = 'screen'
+
+-- Treesitter folding
+-- vim.wo.foldmethod = 'expr'
+-- vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr(0)'
+
+-- Enable 24-bit RGB
+vim.opt.termguicolors = true
